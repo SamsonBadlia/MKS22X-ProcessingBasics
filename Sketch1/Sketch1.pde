@@ -6,12 +6,13 @@ class Visualizer {
   float x, y;
   float [] values;
   float [] speeds;
+  int rH,rW;
 
   Visualizer(float x, float y) {
     this.x = x;
     this.y = y;
-    values = new float[10];
-    speeds = new float[10];
+    values = new float[40];
+    speeds = new float[40];
     for (int i = 0; i < values.length; i++) {
       values[i] = random(-99, 99);
       speeds[i] = random(2);
@@ -30,13 +31,13 @@ class Visualizer {
     //the line is the 0 y-value, the top is 100, the bottom is -100
     line(x, y+100, x+400, y+100);
 
-    for (int i  = 0; i < 10; i++) {
+    for (int i  = 0; i < 40; i++) {
       //changes color based on range 
       if (values[i] <= MAX_VALUE && values[i] > 50) fill(255, 0, 0) ;
       else if (values[i] <= 50 && values[i] > 0) fill(255, 128, 0) ; 
       else if (values[i] <= 0 && values[i] > -50) fill(255, 255, 0); 
       else if (values[i] <= -50) fill(0, 255, 0);
-      rect(x + 40 * i, y + 100, 40, values[i]);
+      rect(x + 400/values.length * i, y + 100, 400/values.length, values[i]);
     }
   }
 
